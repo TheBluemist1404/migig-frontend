@@ -21,7 +21,7 @@ Also note that lint rules are quite strict for commit, so make sure your message
 ## How `Tanstack` routing work
 
 This repo implement `Tanstack router` file-based method, which means that the file tree structure is what indicates the path to that page (look at directory `routes`)
-Look into `vite.config.js` we will see
+Look into `vite.config.ts` we will see
 
 ```js
 tanstackRouter({
