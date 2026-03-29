@@ -12,7 +12,14 @@ import globals from 'globals'
 export default defineConfig([
   // Ignore build artifacts and logs globally
   {
-    ignores: ['dist/', 'build/', 'coverage/', '*.log'],
+    ignores: [
+      'dist/',
+      'build/',
+      'coverage/',
+      '*.log',
+      'eslint.config.js',
+      'prettier.config.js',
+    ],
   },
 
   // Base configs from tanstack and eslint recommended for JS
