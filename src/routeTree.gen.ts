@@ -43,8 +43,8 @@ const ForumIndexRoute = ForumIndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/forum': typeof ForumIndexRoute
-  '/profile': typeof ProfileIndexRoute
+  '/forum/': typeof ForumIndexRoute
+  '/profile/': typeof ProfileIndexRoute
   '/login': typeof AuthLoginRoute
   '/signup': typeof AuthSignupRoute
 }
@@ -65,7 +65,7 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/forum' | '/profile' | '/login' | '/signup'
+  fullPaths: '/' | '/forum/' | '/profile/' | '/login' | '/signup'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/forum' | '/profile' | '/login' | '/signup'
   id:
@@ -111,14 +111,14 @@ declare module '@tanstack/react-router' {
     '/profile/': {
       id: '/profile/'
       path: '/profile'
-      fullPath: '/profile'
+      fullPath: '/profile/'
       preLoaderRoute: typeof ProfileIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/forum/': {
       id: '/forum/'
       path: '/forum'
-      fullPath: '/forum'
+      fullPath: '/forum/'
       preLoaderRoute: typeof ForumIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
