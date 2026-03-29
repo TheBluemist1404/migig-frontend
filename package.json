@@ -6,7 +6,6 @@
     "dev": "vite",
     "build": "vite build && tsc",
     "serve": "vite preview",
-    "test": "vitest run",
     "lint": "eslint",
     "format": "prettier",
     "check": "prettier --write . && eslint --fix",
@@ -39,8 +38,6 @@
     "@tanstack/eslint-config": "^0.3.0",
     "@tanstack/eslint-plugin-query": "^5.91.2",
     "@tanstack/eslint-plugin-router": "^1.133.19",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/react": "^16.2.0",
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.8",
@@ -52,13 +49,11 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.0",
     "husky": "^9.1.7",
-    "jsdom": "^27.0.0",
     "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.2",
     "vite": "^7.1.7",
-    "vitest": "^3.0.5",
     "web-vitals": "^5.1.0"
   }
 }
