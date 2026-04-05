@@ -116,7 +116,7 @@ function App() {
               type="button"
               className="rounded-md border border-blue-600 bg-white px-6 py-3 text-primary shadow-sm transition-colors hover:border-blue-700 hover:bg-blue-700 hover:text-white"
             >
-              <Link to="/tim-viec">Xem việc làm</Link>
+              <Link to="/forum">Xem việc làm</Link>
             </button>
           </div>
           <div className="flex items-center justify-center gap-10 mt-16 flex-wrap">
