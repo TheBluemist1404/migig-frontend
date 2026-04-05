@@ -114,7 +114,7 @@ function App() {
 
             <button
               type="button"
-              className="rounded-md border border-blue-600 bg-primary px-6 py-3 text-primary shadow-sm transition-colors hover:border-blue-700 hover:bg-blue-700 hover:text-white"
+              className="rounded-md border border-blue-600 bg-white px-6 py-3 text-primary shadow-sm transition-colors hover:border-blue-700 hover:bg-blue-700 hover:text-white"
             >
               <Link to="/tim-viec">Xem việc làm</Link>
             </button>
@@ -142,7 +142,7 @@ function App() {
               <button
                 key={c}
                 type="button"
-                className="rounded-full border border-lightgray bg-primary px-4 py-2 text-sm text-primary transition-colors hover:border-blue-700 hover:bg-blue-700 hover:text-white"
+                className="rounded-full border border-lightgray bg-white px-4 py-2 text-sm text-primary transition-colors hover:border-blue-700 hover:bg-blue-700 hover:text-white"
               >
                 {c}
               </button>
