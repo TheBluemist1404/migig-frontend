@@ -36,6 +36,8 @@ type Role = 'student' | 'employer' | null
 function SignupPage() {
   const [role, setRole] = useState<Role>(null)
   const [step, setStep] = useState(1)
+  const [selectedUniversity, setSelectedUniversity] = useState('')
+  const [otherUniversity, setOtherUniversity] = useState('')
 
   return (
     <div className="flex min-h-screen bg-slate-50">
@@ -263,16 +265,19 @@ function SignupPage() {
 
               {role === 'student' && (
                 <div className="space-y-1.5">
-                  <label
-                    htmlFor="signup-university"
-                    className="text-sm font-medium text-slate-900"
-                  >
+                  <label className="text-sm font-medium text-slate-900">
                     Trường đại học
                   </label>
                   <div className="relative">
                     <select
                       id="signup-university"
-                      defaultValue=""
+                      value={selectedUniversity}
+                      onChange={(event) => {
+                        setSelectedUniversity(event.target.value)
+                        if (event.target.value !== 'Trường khác') {
+                          setOtherUniversity('')
+                        }
+                      }}
                       className="h-11 w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 pr-11 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
                     >
                       <option value="" disabled>
@@ -286,6 +291,24 @@ function SignupPage() {
                     </select>
                     <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
                   </div>
+
+                  {selectedUniversity === 'Trường khác' && (
+                    <div className="mt-3 space-y-1.5">
+                      <label className="text-sm font-medium text-slate-900">
+                        Nhập tên trường của bạn
+                      </label>
+                      <input
+                        id="signup-university-other"
+                        type="text"
+                        value={otherUniversity}
+                        onChange={(event) =>
+                          setOtherUniversity(event.target.value)
+                        }
+                        placeholder="Ví dụ: Đại học ABC"
+                        className={inputClasses}
+                      />
+                    </div>
+                  )}
                 </div>
               )}
 
