@@ -10,14 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/~__root'
 import { Route as IndexRouteImport } from './routes/~index'
+import { Route as TimViecJobIdRouteImport } from './routes/~tim-viec/~$jobId'
 import { Route as AuthSignupRouteImport } from './routes/~_auth/~signup'
 import { Route as AuthLoginRouteImport } from './routes/~_auth/~login'
+import { Route as TimViecIndexRouteImport } from './routes/~tim-viec/~index'
 import { Route as ProfileIndexRouteImport } from './routes/~profile/~index'
 import { Route as ForumIndexRouteImport } from './routes/~forum/~index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimViecJobIdRoute = TimViecJobIdRouteImport.update({
+  id: '/tim-viec/$jobId',
+  path: '/tim-viec/$jobId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthSignupRoute = AuthSignupRouteImport.update({
@@ -28,6 +35,11 @@ const AuthSignupRoute = AuthSignupRouteImport.update({
 const AuthLoginRoute = AuthLoginRouteImport.update({
   id: '/_auth/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimViecIndexRoute = TimViecIndexRouteImport.update({
+  id: '/tim-viec/',
+  path: '/tim-viec/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProfileIndexRoute = ProfileIndexRouteImport.update({
@@ -45,44 +57,68 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/forum/': typeof ForumIndexRoute
   '/profile/': typeof ProfileIndexRoute
+  '/tim-viec/': typeof TimViecIndexRoute
   '/login': typeof AuthLoginRoute
   '/signup': typeof AuthSignupRoute
+  '/tim-viec/$jobId': typeof TimViecJobIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/forum': typeof ForumIndexRoute
   '/profile': typeof ProfileIndexRoute
+  '/tim-viec': typeof TimViecIndexRoute
   '/login': typeof AuthLoginRoute
   '/signup': typeof AuthSignupRoute
+  '/tim-viec/$jobId': typeof TimViecJobIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/forum/': typeof ForumIndexRoute
   '/profile/': typeof ProfileIndexRoute
+  '/tim-viec/': typeof TimViecIndexRoute
   '/_auth/login': typeof AuthLoginRoute
   '/_auth/signup': typeof AuthSignupRoute
+  '/tim-viec/$jobId': typeof TimViecJobIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/forum/' | '/profile/' | '/login' | '/signup'
+  fullPaths:
+    | '/'
+    | '/forum/'
+    | '/profile/'
+    | '/tim-viec/'
+    | '/login'
+    | '/signup'
+    | '/tim-viec/$jobId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/forum' | '/profile' | '/login' | '/signup'
+  to:
+    | '/'
+    | '/forum'
+    | '/profile'
+    | '/tim-viec'
+    | '/login'
+    | '/signup'
+    | '/tim-viec/$jobId'
   id:
     | '__root__'
     | '/'
     | '/forum/'
     | '/profile/'
+    | '/tim-viec/'
     | '/_auth/login'
     | '/_auth/signup'
+    | '/tim-viec/$jobId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ForumIndexRoute: typeof ForumIndexRoute
   ProfileIndexRoute: typeof ProfileIndexRoute
+  TimViecIndexRoute: typeof TimViecIndexRoute
   AuthLoginRoute: typeof AuthLoginRoute
   AuthSignupRoute: typeof AuthSignupRoute
+  TimViecJobIdRoute: typeof TimViecJobIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -92,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tim-viec/$jobId': {
+      id: '/tim-viec/$jobId'
+      path: '/tim-viec/$jobId'
+      fullPath: '/tim-viec/$jobId'
+      preLoaderRoute: typeof TimViecJobIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_auth/signup': {
@@ -106,6 +149,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tim-viec/': {
+      id: '/tim-viec/'
+      path: '/tim-viec'
+      fullPath: '/tim-viec/'
+      preLoaderRoute: typeof TimViecIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/profile/': {
@@ -129,8 +179,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ForumIndexRoute: ForumIndexRoute,
   ProfileIndexRoute: ProfileIndexRoute,
+  TimViecIndexRoute: TimViecIndexRoute,
   AuthLoginRoute: AuthLoginRoute,
   AuthSignupRoute: AuthSignupRoute,
+  TimViecJobIdRoute: TimViecJobIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
