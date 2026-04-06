@@ -1,48 +1,49 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { Briefcase } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-
 export const Route = createFileRoute('/_auth/login')({
-  component: RouteComponent,
+  component: LoginPage,
 })
 
-function RouteComponent() {
+const inputClasses =
+  'h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100 placeholder:text-slate-400'
+
+const primaryButtonClasses =
+  'flex h-11 w-full items-center justify-center rounded-xl bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-700'
+
+function LoginPage() {
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center px-4 py-12">
+    <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-12">
       <div className="w-full max-w-sm">
-        {/* LOGO */}
-        <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center">
-            <Briefcase className="w-5 h-5 text-white" />
+        <div className="mb-8 flex items-center justify-center gap-2">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600">
+            <Briefcase className="h-5 w-5 text-white" />
           </div>
-          <span className="font-bold text-xl text-foreground">GigVerse</span>
+          <span className="text-xl font-bold text-slate-900">GigVerse</span>
         </div>
 
-        {/* CARD */}
-        <div className="bg-card border border-border rounded-2xl p-8 shadow-sm">
-          <h1 className="text-xl font-bold mb-1">Đăng nhập</h1>
-          <p className="text-sm text-muted-foreground mb-7">
-            Chào mừng trở lại!
-          </p>
+        <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+          <h1 className="mb-1 text-xl font-bold text-slate-900">Đăng nhập</h1>
+          <p className="mb-7 text-sm text-slate-500">Chào mừng trở lại!</p>
 
           <div className="space-y-4">
-            {/* EMAIL */}
             <div className="space-y-1.5">
-              <Label>Email</Label>
-              <Input
+              <label className="text-sm font-medium text-slate-900">
+                Email
+              </label>
+              <input
+                id="login-email"
                 type="email"
                 placeholder="you@example.com"
-                className="h-11"
+                className={inputClasses}
               />
             </div>
 
-            {/* PASSWORD */}
             <div className="space-y-1.5">
               <div className="flex justify-between">
-                <Label>Mật khẩu</Label>
+                <label className="text-sm font-medium text-slate-900">
+                  Mật khẩu
+                </label>
                 <Link
                   to="/login"
                   className="text-xs text-blue-600 hover:underline"
@@ -50,27 +51,29 @@ function RouteComponent() {
                   Quên mật khẩu?
                 </Link>
               </div>
-              <Input type="password" placeholder="••••••••" className="h-11" />
+              <input
+                id="login-password"
+                type="password"
+                placeholder="••••••••"
+                className={inputClasses}
+              />
             </div>
 
-            {/* LOGIN BUTTON */}
-            <Button
-              className="w-full h-11 bg-blue-600 text-white hover:bg-blue-700"
-              asChild
-            >
-              <Link to="/profile">Đăng nhập</Link>
-            </Button>
+            <Link to="/profile" className={primaryButtonClasses}>
+              Đăng nhập
+            </Link>
 
-            {/* DIVIDER */}
             <div className="flex items-center justify-center gap-4">
               <div className="h-px w-40 bg-slate-200" />
               <span className="text-sm text-slate-500">hoặc</span>
               <div className="h-px w-40 bg-slate-200" />
             </div>
 
-            {/* GOOGLE */}
-            <Button className="w-full h-11 gap-2 !bg-white !text-primary hover:!bg-blue-700 hover:!text-white">
-              <svg className="w-4 h-4" viewBox="0 0 24 24">
+            <button
+              type="button"
+              className="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 text-sm font-medium text-slate-900 transition-colors hover:border-blue-700 hover:bg-blue-700 hover:text-white"
+            >
+              <svg className="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                   fill="#4285F4"
@@ -89,16 +92,15 @@ function RouteComponent() {
                 />
               </svg>
               Tiếp tục với Google
-            </Button>
+            </button>
           </div>
         </div>
 
-        {/* FOOTER */}
-        <p className="mt-5 text-center text-sm text-muted-foreground">
+        <p className="mt-5 text-center text-sm text-slate-500">
           Chưa có tài khoản?{' '}
           <Link
             to="/signup"
-            className="text-blue-600 font-medium hover:underline"
+            className="font-medium text-blue-600 hover:underline"
           >
             Đăng ký miễn phí
           </Link>

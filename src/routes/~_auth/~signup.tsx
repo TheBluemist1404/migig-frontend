@@ -1,22 +1,15 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
-import { Briefcase, Building2, CheckCircle2, GraduationCap } from 'lucide-react'
-
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-
-import { cn } from '@/lib/utils'
+  Briefcase,
+  Building2,
+  CheckCircle2,
+  ChevronDown,
+  GraduationCap,
+} from 'lucide-react'
 
 export const Route = createFileRoute('/_auth/signup')({
-  component: RouteComponent,
+  component: SignupPage,
 })
 
 const universities = [
@@ -35,28 +28,30 @@ const universities = [
   'Trường khác',
 ]
 
+const inputClasses =
+  'h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100 placeholder:text-slate-400'
+
 type Role = 'student' | 'employer' | null
 
-function RouteComponent() {
+function SignupPage() {
   const [role, setRole] = useState<Role>(null)
   const [step, setStep] = useState(1)
 
   return (
-    <div className="min-h-screen bg-background flex">
-      {/* LEFT */}
-      <div className="hidden lg:flex flex-col justify-between w-[420px] shrink-0 bg-blue-500 p-10">
+    <div className="flex min-h-screen bg-slate-50">
+      <div className="hidden w-[420px] shrink-0 flex-col justify-between bg-blue-500 p-10 lg:flex">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
-            <Briefcase className="w-4 h-4 text-white" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
+            <Briefcase className="h-4 w-4 text-white" />
           </div>
-          <span className="font-bold text-lg text-white">GigVerse</span>
+          <span className="text-lg font-bold text-white">GigVerse</span>
         </div>
 
         <div>
-          <h2 className="text-3xl font-bold text-white mb-4 leading-snug">
+          <h2 className="mb-4 text-3xl font-bold leading-snug text-white">
             Bắt đầu hành trình kiếm tiền của bạn
           </h2>
-          <p className="text-white/70 text-sm mb-8">
+          <p className="mb-8 text-sm text-white/70">
             Hàng nghìn sinh viên IT đang kiếm thu nhập linh hoạt mỗi ngày.
           </p>
 
@@ -67,72 +62,66 @@ function RouteComponent() {
               'Xây dựng portfolio thực tế',
             ].map((item) => (
               <div key={item} className="flex items-center gap-3">
-                <CheckCircle2 className="w-4 h-4 text-white/80" />
-                <span className="text-white/80 text-sm">{item}</span>
+                <CheckCircle2 className="h-4 w-4 text-white/80" />
+                <span className="text-sm text-white/80">{item}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <p className="text-white/40 text-xs">© 2025 GigVerse</p>
+        <p className="text-xs text-white/40">© 2025 GigVerse</p>
       </div>
 
-      {/* RIGHT */}
-      <div className="flex-1 flex items-center justify-center px-4 py-12">
+      <div className="flex flex-1 items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
-          {/* LOGO MOBILE */}
-          <div className="flex items-center gap-2 mb-8 lg:hidden">
-            <div className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center">
-              <Briefcase className="w-4 h-4 text-primary-foreground" />
+          <div className="mb-8 flex items-center gap-2 lg:hidden">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-600">
+              <Briefcase className="h-4 w-4 text-white" />
             </div>
-            <span className="font-bold text-foreground">GigVerse</span>
+            <span className="font-bold text-slate-900">GigVerse</span>
           </div>
 
-          <h1 className="text-2xl font-bold text-foreground mb-1">
+          <h1 className="mb-1 text-2xl font-bold text-slate-900">
             Tạo tài khoản
           </h1>
-          <p className="text-muted-foreground text-sm mb-8">
+          <p className="mb-8 text-sm text-slate-500">
             Điền thông tin bên dưới để bắt đầu.
           </p>
 
-          {/* STEP 1 */}
           {step === 1 && (
             <div className="space-y-4">
-              <p className="text-sm font-medium text-foreground">
+              <p className="text-sm font-medium text-slate-900">
                 Bạn đăng ký với tư cách:
               </p>
 
               <div className="grid grid-cols-2 gap-3">
-                {/* STUDENT */}
                 <button
                   type="button"
+                  aria-pressed={role === 'student'}
                   onClick={() => setRole('student')}
-                  className={cn(
-                    'relative flex flex-col items-center gap-3 rounded-2xl border-2 p-6 transition-all',
+                  className={`relative flex flex-col items-center gap-3 rounded-2xl border-2 p-6 transition-all ${
                     role === 'student'
-                      ? 'border-2 border-blue-600 bg-blue-50'
-                      : 'border-2 border-slate-200 bg-white hover:border-blue-300',
-                  )}
+                      ? 'border-blue-600 bg-blue-50'
+                      : 'border-slate-200 bg-white hover:border-blue-300'
+                  }`}
                 >
                   <div
-                    className={cn(
-                      'flex h-12 w-12 items-center justify-center rounded-xl',
-                      role === 'student' ? 'bg-blue-100' : 'bg-slate-100',
-                    )}
+                    className={`flex h-12 w-12 items-center justify-center rounded-xl ${
+                      role === 'student' ? 'bg-blue-100' : 'bg-slate-100'
+                    }`}
                   >
                     <GraduationCap
-                      className={cn(
-                        'h-5 w-5',
-                        role === 'student' ? 'text-blue-600' : 'text-slate-400',
-                      )}
+                      className={`h-5 w-5 ${
+                        role === 'student' ? 'text-blue-600' : 'text-slate-400'
+                      }`}
                     />
                   </div>
 
                   <div className="text-center">
-                    <p className="font-semibold text-sm text-foreground">
+                    <p className="text-sm font-semibold text-slate-900">
                       Sinh viên
                     </p>
-                    <p className="text-xs text-muted-foreground mt-0.5">
+                    <p className="mt-0.5 text-xs text-slate-500">
                       Tìm việc & kiếm tiền
                     </p>
                   </div>
@@ -143,39 +132,33 @@ function RouteComponent() {
                     </div>
                   )}
                 </button>
-
-                {/* EMPLOYER */}
                 <button
                   type="button"
+                  aria-pressed={role === 'employer'}
                   onClick={() => setRole('employer')}
-                  className={cn(
-                    'relative flex flex-col items-center gap-3 rounded-2xl border-2 p-6 transition-all',
+                  className={`relative flex flex-col items-center gap-3 rounded-2xl border-2 p-6 transition-all ${
                     role === 'employer'
-                      ? 'border-2 border-blue-600 bg-blue-50'
-                      : 'border-2 border-slate-200 bg-white hover:border-blue-300',
-                  )}
+                      ? 'border-blue-600 bg-blue-50'
+                      : 'border-slate-200 bg-white hover:border-blue-300'
+                  }`}
                 >
                   <div
-                    className={cn(
-                      'flex h-12 w-12 items-center justify-center rounded-xl',
-                      role === 'employer' ? 'bg-blue-100' : 'bg-slate-100',
-                    )}
+                    className={`flex h-12 w-12 items-center justify-center rounded-xl ${
+                      role === 'employer' ? 'bg-blue-100' : 'bg-slate-100'
+                    }`}
                   >
                     <Building2
-                      className={cn(
-                        'h-5 w-5',
-                        role === 'employer'
-                          ? 'text-blue-600'
-                          : 'text-slate-400',
-                      )}
+                      className={`h-5 w-5 ${
+                        role === 'employer' ? 'text-blue-600' : 'text-slate-400'
+                      }`}
                     />
                   </div>
 
                   <div className="text-center">
-                    <p className="font-semibold text-sm text-foreground">
+                    <p className="text-sm font-semibold text-slate-900">
                       Nhà tuyển dụng
                     </p>
-                    <p className="text-xs text-muted-foreground mt-0.5">
+                    <p className="mt-0.5 text-xs text-slate-500">
                       Đăng việc & thuê ngay
                     </p>
                   </div>
@@ -187,15 +170,21 @@ function RouteComponent() {
                   )}
                 </button>
               </div>
-              <Button
-                className="w-full h-11 bg-blue-600 text-white hover:bg-blue-700"
+
+              <button
+                type="button"
                 disabled={!role}
                 onClick={() => setStep(2)}
+                className="h-11 w-full rounded-xl bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-300"
               >
                 Tiếp tục
-              </Button>
-              <Button className="w-full h-11 gap-2 !bg-white !text-primary hover:!bg-blue-700 hover:!text-white">
-                <svg className="w-4 h-4" viewBox="0 0 24 24">
+              </button>
+
+              <button
+                type="button"
+                className="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 text-sm font-medium text-slate-900 transition-colors hover:border-blue-700 hover:bg-blue-700 hover:text-white"
+              >
+                <svg className="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
                   <path
                     d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                     fill="#4285F4"
@@ -214,81 +203,106 @@ function RouteComponent() {
                   />
                 </svg>
                 Tiếp tục với Google
-              </Button>
+              </button>
             </div>
           )}
 
-          {/* STEP 2 */}
           {step === 2 && (
             <div className="space-y-4">
               <button
+                type="button"
                 onClick={() => setStep(1)}
-                className="text-sm text-muted-foreground hover:text-blue-600 flex items-center gap-1 mb-2"
+                className="flex items-center gap-1 text-sm text-slate-500 transition-colors hover:text-blue-600"
               >
                 ← Quay lại
               </button>
-              <br />
+
               <div className="space-y-1.5">
-                <Label htmlFor="name">Họ và tên</Label>
-                <Input id="name" placeholder="Nguyễn Văn A" className="h-11" />
+                <label
+                  htmlFor="signup-name"
+                  className="text-sm font-medium text-slate-900"
+                >
+                  Họ và tên
+                </label>
+                <input
+                  id="signup-name"
+                  placeholder="Nguyễn Văn A"
+                  className={inputClasses}
+                />
               </div>
+
               <div className="space-y-1.5">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
+                <label
+                  htmlFor="signup-email"
+                  className="text-sm font-medium text-slate-900"
+                >
+                  Email
+                </label>
+                <input
+                  id="signup-email"
                   type="email"
                   placeholder="you@example.com"
-                  className="h-11"
+                  className={inputClasses}
                 />
               </div>
+
               <div className="space-y-1.5">
-                <Label htmlFor="password">Mật khẩu</Label>
-                <Input
-                  id="password"
+                <label
+                  htmlFor="signup-password"
+                  className="text-sm font-medium text-slate-900"
+                >
+                  Mật khẩu
+                </label>
+                <input
+                  id="signup-password"
                   type="password"
                   placeholder="Ít nhất 8 ký tự"
-                  className="h-11"
+                  className={inputClasses}
                 />
               </div>
+
               {role === 'student' && (
                 <div className="space-y-1.5">
-                  <Label>Trường đại học</Label>
-                  <Select>
-                    <SelectTrigger className="h-11 w-full">
-                      <SelectValue placeholder="Chọn trường của bạn" />
-                    </SelectTrigger>
-                    <SelectContent
-                      position="popper"
-                      className="z-50 w-[var(--radix-select-trigger-width)] rounded-2xl border border-slate-200 bg-white p-2 shadow-xl"
+                  <label
+                    htmlFor="signup-university"
+                    className="text-sm font-medium text-slate-900"
+                  >
+                    Trường đại học
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="signup-university"
+                      defaultValue=""
+                      className="h-11 w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 pr-11 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
                     >
-                      {universities.map((u) => (
-                        <SelectItem
-                          key={u}
-                          value={u}
-                          className="rounded-xl px-4 py-3 text-base text-slate-900 focus:bg-slate-50 focus:text-slate-900"
-                        >
-                          {u}
-                        </SelectItem>
+                      <option value="" disabled>
+                        Chọn trường của bạn
+                      </option>
+                      {universities.map((university) => (
+                        <option key={university} value={university}>
+                          {university}
+                        </option>
                       ))}
-                    </SelectContent>
-                  </Select>
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                  </div>
                 </div>
               )}
 
-              <Button
-                className="w-full h-11 mt-2 bg-blue-600 text-white hover:bg-blue-700"
-                asChild
+              <Link
+                to="/forum"
+                className="flex h-11 w-full items-center justify-center rounded-xl bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-700"
               >
-                <Link to="/forum">Tạo tài khoản</Link>
-              </Button>
+                Tạo tài khoản
+              </Link>
             </div>
           )}
 
-          <p className="mt-6 text-center text-sm text-muted-foreground">
+          <p className="mt-6 text-center text-sm text-slate-500">
             Đã có tài khoản?{' '}
             <Link
               to="/login"
-              className="text-blue-600 font-medium hover:underline "
+              className="font-medium text-blue-600 hover:underline"
             >
               Đăng nhập
             </Link>
