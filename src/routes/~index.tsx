@@ -83,13 +83,13 @@ function LandingPage() {
 
             <div className="flex items-center gap-3">
               <Link
-                to="/login"
+                to="/dang-nhap"
                 className="rounded-md border border-blue-600 bg-white px-4 py-2 text-blue-600 text-sm transition-colors hover:border-blue-700 hover:bg-blue-700 hover:text-white"
               >
                 Đăng Nhập
               </Link>
               <Link
-                to="/signup"
+                to="/dang-ky"
                 className="rounded-md border border-slate-200 bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-blue-700 hover:bg-blue-700"
               >
                 Bắt đầu miễn phí
@@ -112,7 +112,7 @@ function LandingPage() {
 
           <div className="flex justify-center gap-3">
             <Link
-              to="/signup"
+              to="/dang-ky"
               className="flex items-center gap-2 rounded-md bg-blue-600 px-6 py-3 text-white transition-colors hover:bg-blue-700"
             >
               Đăng ký miễn phí <ArrowRight className="h-4 w-4" />
@@ -206,7 +206,7 @@ function LandingPage() {
           <h2 className="mb-4 text-3xl font-bold">Sẵn sàng bắt đầu chưa?</h2>
 
           <Link
-            to="/signup"
+            to="/dang-ky"
             className="inline-block rounded-md bg-blue-600 px-6 py-3 text-white transition-colors hover:bg-blue-700"
           >
             Đăng ký ngay
