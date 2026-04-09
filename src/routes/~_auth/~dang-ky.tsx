@@ -8,7 +8,7 @@ import {
   GraduationCap,
 } from 'lucide-react'
 
-export const Route = createFileRoute('/_auth/signup')({
+export const Route = createFileRoute('/_auth/dang-ky')({
   component: SignupPage,
 })
 
@@ -41,7 +41,7 @@ function SignupPage() {
 
   return (
     <div className="flex min-h-screen bg-slate-50">
-      <div className="hidden w-[420px] shrink-0 flex-col justify-between bg-blue-500 p-10 lg:flex">
+      <div className="hidden w-105 shrink-0 flex-col justify-between bg-blue-500 p-10 lg:flex">
         <div className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
             <Briefcase className="h-4 w-4 text-white" />
@@ -313,7 +313,7 @@ function SignupPage() {
               )}
 
               <Link
-                to="/forum"
+                to="/tim-viec"
                 className="flex h-11 w-full items-center justify-center rounded-xl bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-700"
               >
                 Tạo tài khoản
@@ -324,7 +324,7 @@ function SignupPage() {
           <p className="mt-6 text-center text-sm text-slate-500">
             Đã có tài khoản?{' '}
             <Link
-              to="/login"
+              to="/dang-nhap"
               className="font-medium text-blue-600 hover:underline"
             >
               Đăng nhập

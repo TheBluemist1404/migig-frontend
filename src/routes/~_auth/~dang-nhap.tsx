@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { Briefcase } from 'lucide-react'
 
-export const Route = createFileRoute('/_auth/login')({
+export const Route = createFileRoute('/_auth/dang-nhap')({
   component: LoginPage,
 })
 
