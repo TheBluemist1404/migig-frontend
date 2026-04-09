@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { Briefcase } from 'lucide-react'
 
-export const Route = createFileRoute('/_auth/login')({
+export const Route = createFileRoute('/_auth/dang-nhap')({
   component: LoginPage,
 })
 
@@ -45,7 +45,7 @@ function LoginPage() {
                   Mật khẩu
                 </label>
                 <Link
-                  to="/login"
+                  to="/dang-nhap"
                   className="text-xs text-blue-600 hover:underline"
                 >
                   Quên mật khẩu?
@@ -59,7 +59,7 @@ function LoginPage() {
               />
             </div>
 
-            <Link to="/profile" className={primaryButtonClasses}>
+            <Link to="/ho-so" className={primaryButtonClasses}>
               Đăng nhập
             </Link>
 
@@ -99,7 +99,7 @@ function LoginPage() {
         <p className="mt-5 text-center text-sm text-slate-500">
           Chưa có tài khoản?{' '}
           <Link
-            to="/signup"
+            to="/dang-ky"
             className="font-medium text-blue-600 hover:underline"
           >
             Đăng ký miễn phí
