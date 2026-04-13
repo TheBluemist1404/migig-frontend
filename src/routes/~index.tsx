@@ -117,12 +117,12 @@ function LandingPage() {
             >
               Đăng ký miễn phí <ArrowRight className="h-4 w-4" />
             </Link>
-            <button
-              type="button"
+            <Link
+              to="/tim-viec"
               className="rounded-md border border-blue-600 bg-white px-6 py-3 text-blue-600 shadow-sm transition-colors hover:border-blue-700 hover:bg-blue-700 hover:text-white"
             >
               Xem việc làm
-            </button>
+            </Link>
           </div>
 
           <div className="mt-16 flex flex-wrap items-center justify-center gap-10">
