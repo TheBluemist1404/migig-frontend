@@ -2,8 +2,13 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { ArrowRight, Briefcase, Shield, Star, Users, Zap } from 'lucide-react'
 
 export const Route = createFileRoute('/')({
-  component: HomePage,
+  component: LandingPage,
 })
+
+export const metadata = {
+  title: 'GigVerse – Kiếm tiền linh hoạt cho sinh viên IT',
+  description: 'Nền tảng micro-gigs dành riêng cho sinh viên IT Việt Nam.',
+}
 
 const features = [
   {
@@ -52,219 +57,174 @@ const categories = [
   'Khác',
 ]
 
-function HomePage() {
-  return (
-    <div className="min-h-screen bg-background">
-      <LandingNavbar />
-      <HeroSection />
-      <CategoriesSection />
-      <FeaturesSection />
-      <TestimonialsSection />
-      <CTASection />
-      <Footer />
-    </div>
-  )
-}
+const stats = [
+  ['2.500+', 'Sinh viên'],
+  ['10.000+', 'Công việc'],
+  ['4.8 ★', 'Đánh giá trung bình'],
+]
 
-function LandingNavbar() {
+function LandingPage() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <Briefcase className="w-4 h-4 text-primary-foreground" />
+    <div className="relative min-h-screen overflow-x-hidden bg-slate-50 text-slate-900">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(129,140,248,0.18),_transparent_32%),radial-gradient(circle_at_top_right,_rgba(196,181,253,0.22),_transparent_30%),radial-gradient(circle_at_center_top,_rgba(125,211,252,0.14),_transparent_34%),linear-gradient(180deg,_rgba(255,255,255,0.98)_0%,_rgba(245,247,255,0.98)_40%,_rgba(238,243,255,0.96)_72%,_rgba(255,255,255,1)_100%)]" />
+      <div className="pointer-events-none absolute -left-10 top-20 h-80 w-80 rounded-full bg-indigo-200/40 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-10 h-96 w-96 rounded-full bg-violet-200/45 blur-3xl" />
+      <div className="pointer-events-none absolute left-1/3 top-64 h-72 w-72 rounded-full bg-sky-100/60 blur-3xl" />
+
+      <div className="relative z-10">
+        <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-300 bg-white/80 backdrop-blur-xl">
+          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+            <div className="flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 shadow-sm">
+                <Briefcase className="h-4 w-4 text-white" />
+              </div>
+              <span className="text-lg font-bold">GigVerse</span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Link
+                to="/dang-nhap"
+                className="rounded-md border border-blue-600 bg-white px-4 py-2 text-blue-600 text-sm transition-colors hover:border-blue-700 hover:bg-blue-700 hover:text-white"
+              >
+                Đăng Nhập
+              </Link>
+              <Link
+                to="/dang-ky"
+                className="rounded-md border border-slate-200 bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-blue-700 hover:bg-blue-700"
+              >
+                Bắt đầu miễn phí
+              </Link>
+            </div>
           </div>
-          <span className="font-bold text-lg text-foreground">MiGig</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <Link
-            to="/login"
-            className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Đăng nhập
-          </Link>
-          <Link
-            to="/signup"
-            className="px-4 py-2 text-sm font-medium rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
-          >
-            Bắt đầu miễn phí
-          </Link>
-        </div>
-      </div>
-    </header>
-  )
-}
+        </header>
 
-function HeroSection() {
-  return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 text-center">
-      <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-5">
-        Dành riêng cho sinh viên IT Việt Nam
-      </span>
-      <h1 className="text-5xl sm:text-6xl font-bold text-foreground leading-tight mb-6">
-        Kiếm tiền từ kỹ năng IT
-        <br />
-        <span className="text-primary">ngay khi đang học</span>
-      </h1>
-      <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-        Nền tảng micro-gigs kết nối sinh viên IT với doanh nghiệp. Linh hoạt, an
-        toàn, phù hợp với thời khóa biểu của bạn.
-      </p>
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <Link
-          to="/signup"
-          className="h-12 px-8 inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
-        >
-          Đăng ký miễn phí <ArrowRight className="w-4 h-4" />
-        </Link>
-        <Link
-          to="/tim-viec"
-          className="h-12 px-8 inline-flex items-center rounded-lg border border-border text-foreground font-medium hover:bg-secondary transition-colors"
-        >
-          Xem việc làm
-        </Link>
-      </div>
-      <div className="flex items-center justify-center gap-10 mt-16 flex-wrap">
-        {[
-          ['2.500+', 'Sinh viên'],
-          ['10.000+', 'Công việc'],
-          ['4.8 ★', 'Đánh giá trung bình'],
-        ].map(([val, label]) => (
-          <div key={label} className="text-center">
-            <p className="text-3xl font-bold text-foreground">{val}</p>
-            <p className="text-sm text-muted-foreground mt-1">{label}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  )
-}
+        <section className="mx-auto max-w-7xl px-4 pb-20 pt-40 text-center">
+          <h1 className="mb-6 text-5xl font-bold">
+            Kiếm tiền từ kỹ năng IT <br />
+            <span className="text-blue-600">ngay khi đang học</span>
+          </h1>
 
-function CategoriesSection() {
-  return (
-    <section className="border-y border-border bg-secondary/40 py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-5">
-          Danh mục phổ biến
-        </p>
-        <div className="flex flex-wrap justify-center gap-2">
-          {categories.map((c) => (
+          <p className="mx-auto mb-10 max-w-2xl text-2xl leading-relaxed text-slate-500">
+            Nền tảng micro-gigs kết nối sinh viên IT với doanh nghiệp.
+            <br />
+            Linh hoạt, an toàn, phù hợp với thời khóa biểu của bạn.
+          </p>
+
+          <div className="flex justify-center gap-3">
             <Link
-              key={c}
-              to="/tim-viec"
-              className="inline-flex items-center px-4 py-2 rounded-full border border-border bg-card text-sm font-medium text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
+              to="/dang-ky"
+              className="flex items-center gap-2 rounded-md bg-blue-600 px-6 py-3 text-white transition-colors hover:bg-blue-700"
             >
-              {c}
+              Đăng ký miễn phí <ArrowRight className="h-4 w-4" />
             </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function FeaturesSection() {
-  return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      <h2 className="text-3xl font-bold text-center text-foreground mb-12">
-        Tại sao chọn MiGig?
-      </h2>
-      <div className="grid md:grid-cols-3 gap-6">
-        {features.map((f) => (
-          <div
-            key={f.title}
-            className="bg-card border border-border rounded-2xl p-7 hover:shadow-lg transition-shadow"
-          >
-            <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-              <f.icon className="w-5 h-5 text-primary" />
-            </div>
-            <h3 className="font-semibold text-foreground mb-2 text-base">
-              {f.title}
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {f.desc}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function TestimonialsSection() {
-  return (
-    <section className="bg-secondary/40 border-y border-border py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center text-foreground mb-12">
-          Sinh viên nói gì?
-        </h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div
-              key={t.name}
-              className="bg-card border border-border rounded-2xl p-6"
+            <Link
+              to="/tim-viec"
+              className="rounded-md border border-blue-600 bg-white px-6 py-3 text-blue-600 shadow-sm transition-colors hover:border-blue-700 hover:bg-blue-700 hover:text-white"
             >
-              <div className="flex gap-0.5 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-4 h-4 fill-amber-400 text-amber-400"
-                  />
-                ))}
+              Xem việc làm
+            </Link>
+          </div>
+
+          <div className="mt-16 flex flex-wrap items-center justify-center gap-10">
+            {stats.map(([value, label]) => (
+              <div key={label} className="text-center">
+                <p className="text-3xl font-bold text-slate-900">{value}</p>
+                <p className="mt-1 text-sm text-slate-500">{label}</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                &ldquo;{t.text}&rdquo;
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-sm font-bold text-primary">
-                  {t.name[0]}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">
-                    {t.name}
-                  </p>
-                  <p className="text-xs text-muted-foreground">{t.school}</p>
-                </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="border-y border-slate-200/70 bg-white/50 py-10 text-center backdrop-blur-sm">
+          <p className="mb-5 text-xl font-bold uppercase tracking-widest text-slate-500">
+            Danh mục phổ biến
+          </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {categories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 transition-colors hover:border-blue-700 hover:bg-blue-700 hover:text-white"
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 py-20">
+          <h2 className="mb-12 text-center text-3xl font-bold">
+            Tại sao chọn GigVerse?
+          </h2>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {features.map((feature) => (
+              <div
+                key={feature.title}
+                className="rounded-xl border border-slate-200/80 bg-white/85 p-6 shadow-sm backdrop-blur-sm"
+              >
+                <feature.icon className="mb-3 text-blue-600" />
+                <h3 className="mb-2 font-bold">{feature.title}</h3>
+                <p className="text-sm text-slate-500">{feature.desc}</p>
               </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-white/45 py-20 backdrop-blur-sm">
+          <h2 className="mb-12 text-center text-3xl font-bold">
+            Sinh viên nói gì?
+          </h2>
+
+          <div className="mx-auto grid max-w-7xl gap-6 px-4 md:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <div
+                key={testimonial.name}
+                className="rounded-xl border border-slate-200/80 bg-white/90 p-6 shadow-sm backdrop-blur-sm"
+              >
+                <div className="mb-3 flex">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <Star
+                      key={index}
+                      className="h-4 w-4 fill-amber-400 text-amber-400"
+                    />
+                  ))}
+                </div>
+
+                <p className="mb-4 text-sm text-slate-500">
+                  {testimonial.text}
+                </p>
+
+                <p className="font-semibold">{testimonial.name}</p>
+                <p className="text-xs text-slate-500">{testimonial.school}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-20 text-center">
+          <h2 className="mb-4 text-3xl font-bold">Sẵn sàng bắt đầu chưa?</h2>
+
+          <Link
+            to="/dang-ky"
+            className="inline-block rounded-md bg-blue-600 px-6 py-3 text-white transition-colors hover:bg-blue-700"
+          >
+            Đăng ký ngay
+          </Link>
+        </section>
+
+        <footer className="border-t border-slate-200/70 py-6 text-sm text-slate-500">
+          <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 text-sm sm:flex-row">
+            <div className="flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 shadow-sm">
+                <Briefcase className="h-4 w-4 text-white" />
+              </div>
+              <span className="text-lg font-bold text-slate-900">GigVerse</span>
             </div>
-          ))}
-        </div>
+            <p>© 2025 GigVerse - Dành cho sinh viên IT Việt Nam</p>
+          </div>
+        </footer>
       </div>
-    </section>
-  )
-}
-
-function CTASection() {
-  return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      <div className="bg-primary rounded-3xl px-8 py-16 text-center">
-        <h2 className="text-3xl font-bold text-primary-foreground mb-3">
-          Sẵn sàng bắt đầu chưa?
-        </h2>
-        <p className="text-primary-foreground/80 mb-8 text-lg">
-          Tạo tài khoản miễn phí và nhận việc đầu tiên ngay hôm nay.
-        </p>
-        <Link
-          to="/signup"
-          className="h-12 px-8 inline-flex items-center gap-2 rounded-lg bg-secondary text-secondary-foreground font-medium hover:opacity-90 transition-opacity"
-        >
-          Đăng ký ngay <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
-    </section>
-  )
-}
-
-function Footer() {
-  return (
-    <footer className="border-t border-border py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-muted-foreground">
-        <div className="flex items-center gap-2">
-          <Briefcase className="w-4 h-4 text-primary" />
-          <span className="font-bold text-foreground">MiGig</span>
-        </div>
-        <p>&copy; 2025 MiGig &ndash; Dành cho sinh viên IT Việt Nam.</p>
-      </div>
-    </footer>
+    </div>
   )
 }

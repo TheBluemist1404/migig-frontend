@@ -121,7 +121,7 @@ export default function Navbar() {
                   </a>
                   <hr className="my-1 border-border" />
                   <Link
-                    to="/login"
+                    to="/dang-nhap"
                     onClick={() => setProfileOpen(false)}
                     className="block px-4 py-2 text-sm text-destructive hover:bg-secondary"
                   >
@@ -178,7 +178,7 @@ export default function Navbar() {
               Hồ sơ
             </Link>
             <Link
-              to="/login"
+              to="/dang-nhap"
               onClick={() => setMobileOpen(false)}
               className="px-3 py-2 rounded-lg text-sm text-destructive"
             >

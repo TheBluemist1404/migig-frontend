@@ -11,12 +11,11 @@
 import { Route as rootRouteImport } from './routes/~__root'
 import { Route as IndexRouteImport } from './routes/~index'
 import { Route as TimViecJobIdRouteImport } from './routes/~tim-viec/~$jobId'
-import { Route as AuthSignupRouteImport } from './routes/~_auth/~signup'
-import { Route as AuthLoginRouteImport } from './routes/~_auth/~login'
+import { Route as AuthDangNhapRouteImport } from './routes/~_auth/~dang-nhap'
+import { Route as AuthDangKyRouteImport } from './routes/~_auth/~dang-ky'
 import { Route as TimViecIndexRouteImport } from './routes/~tim-viec/~index'
-import { Route as ProfileIndexRouteImport } from './routes/~profile/~index'
 import { Route as HoSoIndexRouteImport } from './routes/~ho-so/~index'
-import { Route as ForumIndexRouteImport } from './routes/~forum/~index'
+import { Route as CongViecCuaToiIndexRouteImport } from './routes/~cong-viec-cua-toi/~index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,14 +27,14 @@ const TimViecJobIdRoute = TimViecJobIdRouteImport.update({
   path: '/tim-viec/$jobId',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthSignupRoute = AuthSignupRouteImport.update({
-  id: '/_auth/signup',
-  path: '/signup',
+const AuthDangNhapRoute = AuthDangNhapRouteImport.update({
+  id: '/_auth/dang-nhap',
+  path: '/dang-nhap',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthLoginRoute = AuthLoginRouteImport.update({
-  id: '/_auth/login',
-  path: '/login',
+const AuthDangKyRoute = AuthDangKyRouteImport.update({
+  id: '/_auth/dang-ky',
+  path: '/dang-ky',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TimViecIndexRoute = TimViecIndexRouteImport.update({
@@ -43,94 +42,82 @@ const TimViecIndexRoute = TimViecIndexRouteImport.update({
   path: '/tim-viec/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProfileIndexRoute = ProfileIndexRouteImport.update({
-  id: '/profile/',
-  path: '/profile/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const HoSoIndexRoute = HoSoIndexRouteImport.update({
   id: '/ho-so/',
   path: '/ho-so/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ForumIndexRoute = ForumIndexRouteImport.update({
-  id: '/forum/',
-  path: '/forum/',
+const CongViecCuaToiIndexRoute = CongViecCuaToiIndexRouteImport.update({
+  id: '/cong-viec-cua-toi/',
+  path: '/cong-viec-cua-toi/',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/forum/': typeof ForumIndexRoute
+  '/cong-viec-cua-toi/': typeof CongViecCuaToiIndexRoute
   '/ho-so/': typeof HoSoIndexRoute
-  '/profile/': typeof ProfileIndexRoute
   '/tim-viec/': typeof TimViecIndexRoute
-  '/login': typeof AuthLoginRoute
-  '/signup': typeof AuthSignupRoute
+  '/dang-ky': typeof AuthDangKyRoute
+  '/dang-nhap': typeof AuthDangNhapRoute
   '/tim-viec/$jobId': typeof TimViecJobIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/forum': typeof ForumIndexRoute
+  '/cong-viec-cua-toi': typeof CongViecCuaToiIndexRoute
   '/ho-so': typeof HoSoIndexRoute
-  '/profile': typeof ProfileIndexRoute
   '/tim-viec': typeof TimViecIndexRoute
-  '/login': typeof AuthLoginRoute
-  '/signup': typeof AuthSignupRoute
+  '/dang-ky': typeof AuthDangKyRoute
+  '/dang-nhap': typeof AuthDangNhapRoute
   '/tim-viec/$jobId': typeof TimViecJobIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/forum/': typeof ForumIndexRoute
+  '/cong-viec-cua-toi/': typeof CongViecCuaToiIndexRoute
   '/ho-so/': typeof HoSoIndexRoute
-  '/profile/': typeof ProfileIndexRoute
   '/tim-viec/': typeof TimViecIndexRoute
-  '/_auth/login': typeof AuthLoginRoute
-  '/_auth/signup': typeof AuthSignupRoute
+  '/_auth/dang-ky': typeof AuthDangKyRoute
+  '/_auth/dang-nhap': typeof AuthDangNhapRoute
   '/tim-viec/$jobId': typeof TimViecJobIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/forum/'
+    | '/cong-viec-cua-toi/'
     | '/ho-so/'
-    | '/profile/'
     | '/tim-viec/'
-    | '/login'
-    | '/signup'
+    | '/dang-ky'
+    | '/dang-nhap'
     | '/tim-viec/$jobId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/forum'
+    | '/cong-viec-cua-toi'
     | '/ho-so'
-    | '/profile'
     | '/tim-viec'
-    | '/login'
-    | '/signup'
+    | '/dang-ky'
+    | '/dang-nhap'
     | '/tim-viec/$jobId'
   id:
     | '__root__'
     | '/'
-    | '/forum/'
+    | '/cong-viec-cua-toi/'
     | '/ho-so/'
-    | '/profile/'
     | '/tim-viec/'
-    | '/_auth/login'
-    | '/_auth/signup'
+    | '/_auth/dang-ky'
+    | '/_auth/dang-nhap'
     | '/tim-viec/$jobId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ForumIndexRoute: typeof ForumIndexRoute
+  CongViecCuaToiIndexRoute: typeof CongViecCuaToiIndexRoute
   HoSoIndexRoute: typeof HoSoIndexRoute
-  ProfileIndexRoute: typeof ProfileIndexRoute
   TimViecIndexRoute: typeof TimViecIndexRoute
-  AuthLoginRoute: typeof AuthLoginRoute
-  AuthSignupRoute: typeof AuthSignupRoute
+  AuthDangKyRoute: typeof AuthDangKyRoute
+  AuthDangNhapRoute: typeof AuthDangNhapRoute
   TimViecJobIdRoute: typeof TimViecJobIdRoute
 }
 
@@ -150,18 +137,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TimViecJobIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_auth/signup': {
-      id: '/_auth/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof AuthSignupRouteImport
+    '/_auth/dang-nhap': {
+      id: '/_auth/dang-nhap'
+      path: '/dang-nhap'
+      fullPath: '/dang-nhap'
+      preLoaderRoute: typeof AuthDangNhapRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_auth/login': {
-      id: '/_auth/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof AuthLoginRouteImport
+    '/_auth/dang-ky': {
+      id: '/_auth/dang-ky'
+      path: '/dang-ky'
+      fullPath: '/dang-ky'
+      preLoaderRoute: typeof AuthDangKyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tim-viec/': {
@@ -171,13 +158,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TimViecIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/profile/': {
-      id: '/profile/'
-      path: '/profile'
-      fullPath: '/profile/'
-      preLoaderRoute: typeof ProfileIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/ho-so/': {
       id: '/ho-so/'
       path: '/ho-so'
@@ -185,11 +165,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HoSoIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/forum/': {
-      id: '/forum/'
-      path: '/forum'
-      fullPath: '/forum/'
-      preLoaderRoute: typeof ForumIndexRouteImport
+    '/cong-viec-cua-toi/': {
+      id: '/cong-viec-cua-toi/'
+      path: '/cong-viec-cua-toi'
+      fullPath: '/cong-viec-cua-toi/'
+      preLoaderRoute: typeof CongViecCuaToiIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -197,12 +177,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ForumIndexRoute: ForumIndexRoute,
+  CongViecCuaToiIndexRoute: CongViecCuaToiIndexRoute,
   HoSoIndexRoute: HoSoIndexRoute,
-  ProfileIndexRoute: ProfileIndexRoute,
   TimViecIndexRoute: TimViecIndexRoute,
-  AuthLoginRoute: AuthLoginRoute,
-  AuthSignupRoute: AuthSignupRoute,
+  AuthDangKyRoute: AuthDangKyRoute,
+  AuthDangNhapRoute: AuthDangNhapRoute,
   TimViecJobIdRoute: TimViecJobIdRoute,
 }
 export const routeTree = rootRouteImport
