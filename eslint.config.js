@@ -19,6 +19,7 @@ export default defineConfig([
       '*.log',
       'eslint.config.js',
       'prettier.config.js',
+      'b_WitYXe1TK5m/',
     ],
   },
 

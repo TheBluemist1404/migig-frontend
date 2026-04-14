@@ -106,7 +106,7 @@ export default function Navbar() {
               {profileOpen && (
                 <div className="absolute right-0 mt-1 w-48 bg-card border border-border rounded-lg shadow-lg py-1 z-50">
                   <Link
-                    to="/profile"
+                    to="/ho-so"
                     onClick={() => setProfileOpen(false)}
                     className="flex items-center gap-2 px-4 py-2 text-sm text-foreground hover:bg-secondary"
                   >
@@ -171,7 +171,7 @@ export default function Navbar() {
           ))}
           <div className="pt-2 border-t border-border mt-2 flex flex-col gap-1">
             <Link
-              to="/profile"
+              to="/ho-so"
               onClick={() => setMobileOpen(false)}
               className="px-3 py-2 rounded-lg text-sm text-muted-foreground hover:bg-secondary"
             >

@@ -15,6 +15,7 @@ import { Route as AuthSignupRouteImport } from './routes/~_auth/~signup'
 import { Route as AuthLoginRouteImport } from './routes/~_auth/~login'
 import { Route as TimViecIndexRouteImport } from './routes/~tim-viec/~index'
 import { Route as ProfileIndexRouteImport } from './routes/~profile/~index'
+import { Route as HoSoIndexRouteImport } from './routes/~ho-so/~index'
 import { Route as ForumIndexRouteImport } from './routes/~forum/~index'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +48,11 @@ const ProfileIndexRoute = ProfileIndexRouteImport.update({
   path: '/profile/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HoSoIndexRoute = HoSoIndexRouteImport.update({
+  id: '/ho-so/',
+  path: '/ho-so/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ForumIndexRoute = ForumIndexRouteImport.update({
   id: '/forum/',
   path: '/forum/',
@@ -56,6 +62,7 @@ const ForumIndexRoute = ForumIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/forum/': typeof ForumIndexRoute
+  '/ho-so/': typeof HoSoIndexRoute
   '/profile/': typeof ProfileIndexRoute
   '/tim-viec/': typeof TimViecIndexRoute
   '/login': typeof AuthLoginRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/forum': typeof ForumIndexRoute
+  '/ho-so': typeof HoSoIndexRoute
   '/profile': typeof ProfileIndexRoute
   '/tim-viec': typeof TimViecIndexRoute
   '/login': typeof AuthLoginRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/forum/': typeof ForumIndexRoute
+  '/ho-so/': typeof HoSoIndexRoute
   '/profile/': typeof ProfileIndexRoute
   '/tim-viec/': typeof TimViecIndexRoute
   '/_auth/login': typeof AuthLoginRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/forum/'
+    | '/ho-so/'
     | '/profile/'
     | '/tim-viec/'
     | '/login'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/forum'
+    | '/ho-so'
     | '/profile'
     | '/tim-viec'
     | '/login'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/forum/'
+    | '/ho-so/'
     | '/profile/'
     | '/tim-viec/'
     | '/_auth/login'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ForumIndexRoute: typeof ForumIndexRoute
+  HoSoIndexRoute: typeof HoSoIndexRoute
   ProfileIndexRoute: typeof ProfileIndexRoute
   TimViecIndexRoute: typeof TimViecIndexRoute
   AuthLoginRoute: typeof AuthLoginRoute
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ho-so/': {
+      id: '/ho-so/'
+      path: '/ho-so'
+      fullPath: '/ho-so/'
+      preLoaderRoute: typeof HoSoIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/forum/': {
       id: '/forum/'
       path: '/forum'
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ForumIndexRoute: ForumIndexRoute,
+  HoSoIndexRoute: HoSoIndexRoute,
   ProfileIndexRoute: ProfileIndexRoute,
   TimViecIndexRoute: TimViecIndexRoute,
   AuthLoginRoute: AuthLoginRoute,
