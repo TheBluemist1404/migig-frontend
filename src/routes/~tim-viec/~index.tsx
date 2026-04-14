@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { SlidersHorizontal } from 'lucide-react'
 import Navbar from '@/components/navbar'
 import SearchBar from '@/components/search-bar'
 import JobCard from '@/components/job-card'
@@ -31,6 +33,7 @@ function TimViecPage() {
   const navigate = useNavigate({ from: Route.fullPath })
   const { jobs, isLoading } = useJobs(filters)
   const { isBookmarked, toggleBookmark } = useBookmarks()
+  const [filterOpen, setFilterOpen] = useState(false)
 
   const updateFilter = (key: keyof TimViecSearch, value: string) => {
     navigate({
@@ -68,6 +71,12 @@ function TimViecPage() {
             <option value="price-high">Giá cao → thấp</option>
             <option value="price-low">Giá thấp → cao</option>
           </select>
+          <button
+            onClick={() => setFilterOpen(!filterOpen)}
+            className="lg:hidden flex items-center gap-2 h-11 px-4 text-sm font-medium rounded-lg border border-border hover:bg-secondary transition-colors"
+          >
+            <SlidersHorizontal className="w-4 h-4" /> Bộ lọc
+          </button>
         </div>
 
         <div className="flex gap-6">
@@ -79,6 +88,7 @@ function TimViecPage() {
             onCategoryChange={(v) => updateFilter('category', v)}
             onExperienceChange={(v) => updateFilter('experience', v)}
             onPriceChange={(v) => updateFilter('priceRange', v)}
+            mobileOpen={filterOpen}
           />
 
           {/* Job list */}
